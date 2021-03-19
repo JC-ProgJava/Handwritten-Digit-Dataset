@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Handwritten Dataset Creator</title>
+    <script src="jszip.min.js"></script>
+    <script src="FileSaver.min.js"></script>
+    <style>
+        #labels button {
+            padding: 10px 10px 10px 10px;
+            font-size: 20px;
+            margin: 20px;
+            border: none;
+            font-weight: 400;
+            background-color: #91E5F6;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        #labels {
+            width: 600px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #drawingCanvas {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+            display: block;
+            border: 1px solid black;
+        }
+
+        #tempcanvas {
+            width: 28px;
+            height: 28px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+            display: block;
+            border: 1px solid black;
+        }
+
+        #canvasimg {
+            width: 28px;
+            height: 28px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<canvas width="300px" height="300px" id="drawingCanvas"></canvas>
+<div id="labels">
+    <button onclick="save(0); erase();">0</button>
+    <button onclick="save(1); erase();">1</button>
+    <button onclick="save(2); erase();">2</button>
+    <button onclick="save(3); erase();">3</button>
+    <button onclick="save(4); erase();">4</button>
+    <button onclick="save(5); erase();">5</button>
+    <button onclick="save(6); erase();">6</button>
+    <button onclick="save(7); erase();">7</button>
+    <button onclick="save(8); erase();">8</button>
+    <button onclick="save(9); erase();">9</button>
+    <button onclick="erase();">Clear</button>
+    <button onclick="done();">Done</button>
+</div>
+    <canvas width="112" height="112" id="temp2canvas"></canvas>
+    <canvas width="28" height="28" id="tempcanvas"></canvas>
+    <img alt="Brush pattern needed! Error: 404" id="brush" src="brush.png" style="visibility: hidden;">
+    <img alt="Display digit as PNG (portable network graphics)" src="" id="canvasimg">
+<script>
+    Notification.permission;
+
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+
+    var zip = new JSZip();
+    var temp2canvas = document.getElementById("temp2canvas");
+    var tempcanvas = document.getElementById("tempcanvas");
+    var count = 0;
+
+    var x = "black",
+        y = 30;
+
+    var filename = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    init();
+
+    function init() {
+        canvas = document.getElementById('drawingCanvas');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+
+        canvas.addEventListener("touchmove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("touchstart", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("touchend", function (e) {
+            findxy('up', e)
+        }, false);
+    }
+
+    function draw() {
+        var testIMG = new Image();
+        testIMG.src = "brush.png";
+        currX -= 12;
+        currY -= 12;
+        ctx.drawImage(testIMG, currX, currY);
+    }
+
+    function erase() {
+        ctx.clearRect(0, 0, w, h);
+    }
+
+    function save(number) {
+        for(let i = -0.2; i <= 0.2; i += 0.05) {
+            for(let j = -0.2; j <= 0.2; j += 0.05) {
+                for(let k = 0.9; k <= 1.1; k += 0.04){
+                    for(let l = 0.9; l <= 1.1; l += 0.04){
+                        temp2canvas.getContext('2d').setTransform(1, 0, 0, 1, 0, 0);
+                        temp2canvas.getContext('2d').clearRect(0, 0, temp2canvas.width, temp2canvas.height);
+                        tempcanvas.getContext('2d').clearRect(0, 0, tempcanvas.width, tempcanvas.height);
+
+                        temp2canvas.getContext('2d').setTransform(k, i, j, l, 0, 0);
+                        document.getElementById("canvasimg").style.border = "2px solid";
+
+                        temp2canvas.getContext('2d').drawImage(canvas, 0, 0, canvas.width, canvas.height, 10, 10, 102, 102);
+                        tempcanvas.getContext('2d').drawImage(temp2canvas, 0, 0, temp2canvas.width, temp2canvas.height, 0, 0, 28, 28);
+
+                        var dataURL = tempcanvas.toDataURL();
+                        document.getElementById("canvasimg").src = dataURL;
+                        zip.file(number + "/" + (filename[number] + 20250) + ".png", document.getElementById("canvasimg").src.replace(/^data:image\/(png|jpg);base64,/, ""), {base64: true});
+   		                filename[number]++;
+                    }
+                }
+            }
+        }
+    }
+
+    function done() {
+        filename = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        zip.generateAsync({type:"blob"})
+        .then(function(blob) {
+            saveAs(blob, "datadown.zip");
+        });
+
+        const notification = new Notification("MNIST Dataset Creator", {
+          body: "Dataset download complete!",
+          icon: "brush.png"
+        })
+    }
+
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.getBoundingClientRect().left;
+            currY = e.clientY - canvas.getBoundingClientRect().top;
+
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.getBoundingClientRect().left;
+                currY = e.clientY - canvas.getBoundingClientRect().top;
+                draw();
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
