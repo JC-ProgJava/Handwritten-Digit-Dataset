@@ -7,6 +7,11 @@
     <script src="jszip.min.js"></script>
     <script src="FileSaver.min.js"></script>
     <style>
+        body {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
         #labels button {
             padding: 10px 10px 10px 10px;
             font-size: 20px;
@@ -124,13 +129,13 @@
         }, false);
 
         canvas.addEventListener("touchmove", function (e) {
-            findxy('move', e.touches[0])
+            canvas.dispatchEvent(e.touches[0])
         }, false);
         canvas.addEventListener("touchstart", function (e) {
-            findxy('down', e.touches[0])
+            canvas.dispatchEvent(e.touches[0])
         }, false);
         canvas.addEventListener("touchend", function (e) {
-            findxy('up', e.touches[0])
+            canvas.dispatchEvent(e.touches[0])
         }, false);
     }
 
