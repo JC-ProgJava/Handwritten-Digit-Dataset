@@ -129,13 +129,16 @@
         }, false);
 
         canvas.addEventListener("touchmove", function (e) {
-            canvas.dispatchEvent(e.touches[0])
+            console.log(e.touches[0])
+            findxy('move', e.touches[0])
         }, false);
         canvas.addEventListener("touchstart", function (e) {
-            canvas.dispatchEvent(e.touches[0])
+            console.log(e.touches[0])
+            findxy('down', e.touches[0])
         }, false);
         canvas.addEventListener("touchend", function (e) {
-            canvas.dispatchEvent(e.touches[0])
+            console.log(e.touches[0])
+            findxy('up', e.touches[0])
         }, false);
     }
 
