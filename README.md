@@ -1,5 +1,5 @@
 # Handwritten-Digit-Dataset
-A collection of 49410 PNG files of digits from 0-9 for use in machine learning.
+A collection of 78570 PNG files of digits from 0-9 for use in machine learning.
 
 **Note:** these images are not from MNIST and are original. They were created with various data augmentation techniques of handwritten digits.
 
