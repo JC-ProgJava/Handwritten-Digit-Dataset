@@ -1,2 +1,21 @@
 # Handwritten-Digit-Dataset
-A collection of 49410 PNG files of digits from 0-9.
+A collection of 49410 PNG files of digits from 0-9 for use in machine learning.
+
+**Note:** these images are not from MNIST and are original. They were created with various data augmentation techniques of handwritten digits.
+
+The dataset can be found [here](https://www.kaggle.com/jcprogjava/handwritten-digits-dataset-not-in-mnist). 
+
+
+## Creating your own dataset
+
+You can create your own dataset [here](https://jc-progjava.github.io/Handwritten-Digit-Dataset/), do note that it takes a while for the data to download (~15 minutes for 29160 files, I find focusing on the tab makes the progress faster).
+
+Steps:
+1. Draw the digit using the canvas box at the center of the screen using your mouse.
+2. Click on the button with the corresponding digit to which you drew.
+   You can click on the 'clear' button to clear the canvas, or refresh the page to remove unsatisfactory data (e.g., the image is cut off at the bottom).
+3. When you have finished drawing all digits from 0-9 **once** (more won't work), click 'done', and wait for your data to download and save.
+
+
+## License
+
