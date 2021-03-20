@@ -3,7 +3,7 @@ A collection of 49410 PNG files of digits from 0-9 for use in machine learning.
 
 **Note:** these images are not from MNIST and are original. They were created with various data augmentation techniques of handwritten digits.
 
-The dataset can be found [here](https://www.kaggle.com/jcprogjava/handwritten-digits-dataset-not-in-mnist), and is updated there as well. You can download it [here]() as well. The dataset consists of 10 folders, one for each digit, and the digits are named '<digit>\<file-number>.png', where <digit> is the digit it depicts, and <file-number>, a number ranging from 0-4940.
+The dataset can be found [here](https://www.kaggle.com/jcprogjava/handwritten-digits-dataset-not-in-mnist), and is updated there as well. You can download it [here]() as well. The dataset consists of 10 folders, one for each digit, and the digits are named '\<digit>\<file-number>.png', where \<digit> is the digit it depicts, and \<file-number>, a number ranging from 0-4940.
 
 
 ## Creating your own dataset
