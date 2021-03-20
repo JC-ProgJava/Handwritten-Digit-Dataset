@@ -21,7 +21,8 @@ Steps:
 
 The dataset is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, which gives permission for:
 - Sharing: distributing & copying the dataset in any format.
-- Adaptation/modification: change, add on to, and use commercially.
+- Adaptation/modification: change, add ons.
+- Commercial use
 
 As long as:
 - Attribution: credit is given to the creator, providing a link to the license and page where the dataset was originally found.
