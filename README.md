@@ -28,3 +28,5 @@ As long as:
 - Attribution: credit is given to the creator, providing a link to the license and page where the dataset was originally found.
 - Changes to the dataset are specified.
 - Your version of this dataset is distributed under the same license.
+
+A more rigorous version can be found [here](LICENSE.md).
