@@ -19,7 +19,7 @@ Steps:
 
 ## License
 
-The dataset is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, which gives permission for:
+The **dataset and code** is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, which gives permission for:
 - Sharing: distributing & copying the dataset in any format.
 - Adaptation/modification: change, add ons.
 - Commercial use
