@@ -8,7 +8,7 @@ The dataset can be found [here](https://github.com/JC-ProgJava/Handwritten-Digit
 
 ## Creating your own dataset
 
-You can create your own dataset [here](https://jc-progjava.github.io/Handwritten-Digit-Dataset/), do note that it takes a while for the data to download (~15 minutes for 29160 files, I find focusing on the tab makes the progress faster).
+You can create your own dataset [here](https://jc-progjava.github.io/Handwritten-Digit-Dataset/), do note that it takes a while for the data to download (~10-15 minutes for 29160 files, I find focusing on the tab makes the progress faster).
 
 Steps:
 1. Draw the digit using the canvas box at the center of the screen using your mouse.
