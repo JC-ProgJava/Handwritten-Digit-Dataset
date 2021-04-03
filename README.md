@@ -3,7 +3,7 @@ A collection of 107,730 28x28 PNG files of digits from 0-9 for use in machine le
 
 **Note:** these images are not from MNIST and are original. They were created with various data augmentation techniques, which were performed on the digits.
 
-The dataset can be found [here](https://github.com/JC-ProgJava/Handwritten-Digit-Dataset/releases), and is updated there. You can download it [here](https://www.kaggle.com/jcprogjava/handwritten-digits-dataset-not-in-mnist) as well. The dataset consists of 10 folders, one for each digit, and the digits are named '\<digit>\<file-number>.png', where \<digit> is the digit it depicts, and \<file-number>, a number ranging from 0 to `the total number of files in the folder - 1`.
+The dataset can be found [here](https://github.com/JC-ProgJava/Handwritten-Digit-Dataset/releases), and is updated there. You can download it [here](https://www.kaggle.com/jcprogjava/handwritten-digits-dataset-not-in-mnist) as well. The dataset consists of 10 folders, one for each digit, and the digits are named '\<digit>\\\<file-number>.png', where \<digit> is the digit it depicts, and \<file-number>, a number ranging from 0 to `the total number of files in the folder - 1`.
 
 
 ## Creating your own dataset
