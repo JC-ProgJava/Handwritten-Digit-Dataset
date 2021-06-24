@@ -1,4 +1,6 @@
 # Handwritten-Digit-Dataset
+[![CodeFactor](https://www.codefactor.io/repository/github/jc-progjava/handwritten-digit-dataset/badge)](https://www.codefactor.io/repository/github/jc-progjava/handwritten-digit-dataset)
+
 A collection of 107,730 28x28 PNG files of digits from 0-9 for use in machine learning.
 
 **Note:** these images are not from MNIST and are original. They were created with various data augmentation techniques, which were performed on the digits.
